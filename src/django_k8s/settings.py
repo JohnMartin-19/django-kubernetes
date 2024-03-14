@@ -105,9 +105,11 @@ if POSTGRES_READY and DB_IS_AVAIL:
             'USER':DB_USERNAME,
             'PASSWORD':DB_PASSWORD,
             'HOST':DB_HOST,
-            'PORT':DB_PORT
+            'PORT':DB_PORT,
         }
     }
+
+
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
