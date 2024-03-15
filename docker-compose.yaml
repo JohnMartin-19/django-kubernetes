@@ -1,7 +1,29 @@
 version: "3.9"
 services:
   app:
+    depends_on:
+      - postgresdb
     build:
       context: ./src
       dockerfile: Dockerfile
     image: django-k8s:v2
+    environment:
+      - PORT=8000
+    env_file:
+      - src/.env
+    ports:
+      - "8001:8000"
+    command: sh -c "chmod +x /app/migrate.sh && sh /app/migrate.sh && /app/entrypoint.sh"
+  postgresdb:
+    image: postgres
+    command: -p 5555
+    env_file:
+      - src/.env
+    
+    expose:
+      - 5555
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/ 
+
+volumes:
+  postgres_data:
