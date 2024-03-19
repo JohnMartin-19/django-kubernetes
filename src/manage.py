@@ -4,6 +4,12 @@ import os
 import sys
 import dotenv
 
+
+from dotenv import load_dotenv
+
+dotenv_path = '/src/.env'
+if os.path.exists(dotenv_path):
+    load_dotenv(dotenv_path)
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_k8s.settings')

@@ -13,7 +13,7 @@ services:
       - src/.env
     ports:
       - "8001:8000"
-    command: sh -c "chmod +x /app/migrate.sh && sh /app/migrate.sh && /app/entrypoint.sh"
+    command: sh -c "chmod +x /src/migrate.sh && sh /src/migrate.sh && /src/entrypoint.sh"
   postgresdb:
     image: postgres
     command: -p 5555
